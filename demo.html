@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>test demo</title>
+</head>
+
+<body>
+
+
+  <script>
+    window.onload = function () {
+      const reverse = function (x) {
+        if (x > Math.pow(2, 31) - 1 || x < -Math.pow(2, 31)) {
+          return;
+        }
+        let ifNegative = false; // 负数判断
+        let xStringed = String(x);  // 转化为字符串
+        let noCharNum = ''; // 用于存放无符号数字
+        if (xStringed.includes('-')) {
+          ifNegative = true;
+          noCharNum = xStringed.slice(1);
+        } else {
+          noCharNum = xStringed;
+        }
+        // 反转
+        let resNum = Number(noCharNum.split('').reverse().join(''));
+        debugger
+        if (ifNegative) {
+          resNum = -resNum;
+        }
+        if (resNum > Math.pow(2, 31) - 1 || resNum < -Math.pow(2, 31)) {
+          return 0;
+        }
+        return resNum;
+      };
+
+      console.log(reverse(-78900000));
+    }
+  </script>
+</body>
+
+</html>
