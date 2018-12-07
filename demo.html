@@ -37,8 +37,31 @@
         }
         return resNum;
       };
+      // convert
+      var convert = function (s, numRows) {
+        let spaceCount = Number(numRows - 2); // 开始的空格数量
+        let res = '';
+        let rowCount = 0;
+        for (let i = 0; i < s.length; i++) {
+          res += s[i];
+          if ((i + 1) % numRows === 0) {
+            if (rowCount === 0) { // 第一行
+              res += '\n';
+            }
+            // if (rowCount === s.length / rowCount - 1) { // 最后一行
 
-      console.log(reverse(-78900000));
+            // }
+            else {
+              res += '\n'.repeat(spaceCount--);
+            }
+            rowCount++;
+
+          }
+        }
+        return res;
+      };
+
+      console.log(convert('LEETCODEISHIRING', 3));
     }
   </script>
 </body>
