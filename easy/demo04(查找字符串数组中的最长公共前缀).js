@@ -19,11 +19,27 @@
 // 链接：https://leetcode-cn.com/problems/longest-common-prefix
 // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-
 /**
  * @param {string[]} strs
  * @return {string}
+ * 水平扫描法：以第一个未基准字符串 prefix，遍历余下的字符串，通过判断是否有匹配的前缀为二次循环条件，不断缩减 prefix 的长度。
  */
 var longestCommonPrefix = function(strs) {
-
+  if (!strs.length) {
+    return "";
+  }
+  let prefix = strs[0];
+  for (let i = 1; i < strs.length; i++) {
+    while (strs[i].indexOf(prefix) != 0) {
+      prefix = prefix.substr(0, prefix.length - 1); // 缩减 prefix 长度
+      if (!prefix) {
+        return "";
+      }
+    }
+  }
+  return prefix;
 };
+
+// const res = longestCommonPrefix(["flower", "flight", "flow"]);
+const res = longestCommonPrefix(["flower", "flow", "flight"]);
+console.log(res);
