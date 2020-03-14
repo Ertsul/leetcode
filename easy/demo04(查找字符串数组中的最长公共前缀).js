@@ -22,7 +22,7 @@
 /**
  * @param {string[]} strs
  * @return {string}
- * 水平扫描法：以第一个未基准字符串 prefix，遍历余下的字符串，通过判断是否有匹配的前缀为二次循环条件，不断缩减 prefix 的长度。
+ * 水平扫描法：以第一个为基准字符串 prefix，遍历余下的字符串，通过判断是否有匹配的前缀为二次循环条件，不断缩减 prefix 的长度。
  */
 var longestCommonPrefix = function(strs) {
   if (!strs.length) {
