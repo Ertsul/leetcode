@@ -44,22 +44,34 @@
  * @param {number} val
  * @return {number}
  */
-var removeElement = function(nums, val) {
-  const len = nums.length;
-  let count = 0;
-  let i = 0;
-  while (i < nums.length) {
-    if (nums[i] == val) {
-      nums.splice(i, 1);
-      count++;
-      i = 0;
-    } else {
-      i++;
+// var removeElement = function(nums, val) {
+//   const len = nums.length;
+//   let count = 0;
+//   let i = 0;
+//   while (i < nums.length) {
+//     if (nums[i] == val) {
+//       nums.splice(i, 1);
+//       count++;
+//       i = 0;
+//     } else {
+//       i++;
+//     }
+//   }
+//   return len - count;
+// };
+
+var removeElement1 = function(nums, val) {
+  let j = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] != val) {
+      nums[j] = nums[i];
+      j++;
     }
   }
-  return len - count;
+
+  return j;
 };
 
 let arr = [0, 1, 2, 2, 3, 0, 4, 2];
-const count = removeElement(arr, 2);
+const count = removeElement1(arr, 2);
 console.log(arr.splice(0, count));
