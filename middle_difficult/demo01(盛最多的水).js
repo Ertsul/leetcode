@@ -10,20 +10,37 @@
  * @param {number[]} height
  * @return {number}
  */
+// var maxArea = function (height) {
+//   let max = 0;
+//   let res = 0;
+//   let xLen = 0;
+//   let yLen = 0;
+//   for (let i = 0; i < height.length; i++) {
+//     for (let j = i + 1; j < height.length; j++) {
+//       xLen = j - i;
+//       yLen = height[j] >= height[i] ? height[i] : height[j];
+//       res = xLen * yLen;
+//       if (res > max) {
+//         max = res;
+//       }
+//     }
+//   }
+//   return max;
+// };
+
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
 var maxArea = function (height) {
   let max = 0;
-  let res = 0;
-  let xLen = 0;
-  let yLen = 0;
-  for (let i = 0; i < height.length; i++) {
-    for (let j = i + 1; j < height.length; j++) {
-      xLen = j - i;
-      yLen = height[j] >= height[i] ? height[i] : height[j];
-      res = xLen * yLen;
-      if (res > max) {
-        max = res;
-      }
-    }
+  let minHeight = 0
+  let area = 0;
+  for (let i = 0, j = height.length - 1; i <= j;) {
+    minHeight = height[i] < height[j] ? height[i++] : height[j--];
+    area = (j - i + 1) * minHeight;
+    max = area > max ? area : max;
   }
   return max;
 };
