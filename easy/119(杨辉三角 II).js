@@ -1,13 +1,19 @@
-// 118. 杨辉三角
+// 给定一个非负索引 k，其中 k ≤ 33，返回杨辉三角的第 k 行。
 
 /**
- * @param {number} numRows
- * @return {number[][]}
+ * 获取杨辉三角的指定行
+ * 直接使用组合公式C(n,i) = n!/(i!*(n-i)!)
+ * 则第(i+1)项是第i项的倍数=(n-i)/(i+1);
  */
-var generate = function (numRows) {
+
+/**
+* @param {number} rowIndex
+* @return {number[]}
+*/
+var getRow = function (rowIndex) {
   // let res = [];
   // let item = [];
-  // for (let i = 0; i < numRows; i++) {
+  // for (let i = 0; i <= rowIndex; i++) {
   //     if (i == 0) {
   //         res[0] = [1];
   //     } 
@@ -26,19 +32,12 @@ var generate = function (numRows) {
   //         item = [];
   //     }
   // }
-  // return res;
-
-  let allRes = [];
+  // return res[rowIndex];
   let res = [];
   let cur = 1;
-  for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
-    res = [];
-    cur = 1;
-    for (let i = 0; i <= rowIndex; i++) {
-      res.push(cur);
-      cur = cur * (rowIndex - i) / (i + 1);
-    }
-    allRes[rowIndex] = res;
+  for (let i = 0; i <= rowIndex; i++) {
+    res.push(cur);
+    cur = cur * (rowIndex - i) / (i + 1);
   }
-  return allRes;
+  return res;
 };
